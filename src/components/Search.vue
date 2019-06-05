@@ -24,6 +24,21 @@
         border: none;
         padding-left: 10px;
         font-size: 18px;
+        @media screen and (max-width: 800px) {
+          & {
+            max-width: 500px;
+          }
+        }
+        @media screen and (max-width: 800px) {
+          & {
+            max-width: 500px;
+          }
+        }
+        @media screen and (max-width: 510px) {
+          & {
+            max-width: 300px;
+          }
+        }
       }
     }
 

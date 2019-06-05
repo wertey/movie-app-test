@@ -46,21 +46,34 @@
   width: 100%;
   height: 40px;
   background: $color-spindle;
+    @media screen and (max-width: 1260px) {
+      & {
+        height: 120px;
+        padding-top: 10px;
+      }
+  }
+  @media screen and (max-width: 510px) {
+    & {
+      padding: 10px;
+    }
+  }
     &-row {
       height: 100%;
       display: flex;
       justify-content: space-between;
       flex-direction: row;
       align-items: center;
+        @media screen and (max-width: 1260px) {
+          & {
+            flex-direction: column;
+            &__user {
+              height: 30px;
+            }
+          }
+      }
       &__logo {
         font-size: 24px;
         font-weight: bold;
-      }
-      &__search {
-
-      }
-      &__user {
-
       }
     }
 }

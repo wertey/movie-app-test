@@ -32,16 +32,31 @@
           <div class="movies-row__block-text">imbdID: 2387hg8</div>
           <div class="movies-row__block-text">Type: movie</div>
         </div>
-
-
-
       </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Movies"
+        name: "Movies",
+      data() {
+        return {
+          loading: true,
+          row: '',
+          column: '',
+        }
+      },
+      beforeMount() {
+        const tokenStr = 'bCT_s0ATF98HruWcM5R0N5ejsiIeKwl9NKTyV880f5k=';
+        axios({ method: 'get', url: 'https://lifestylechristianity.impactfactors.net/api/members/admin/1.0/list', headers: { 'X-Custom-Auth': tokenStr } })
+          .then(res => {
+            this.column = res.data.columns;
+            this.row = res.data.data;
+            console.log(res)
+          })
+          .catch(err => console.log(err))
+          .finally(() => this.loading = false)
+      },
     }
 </script>
 
@@ -51,6 +66,11 @@
 
   .movies {
     padding: 25px 50px 0;
+    @media screen and (max-width: 510px) {
+        & {
+          padding: 10px 10px 0;
+        }
+    }
       &__result {
         font-weight: bold;
         font-size: 20px;
@@ -67,6 +87,13 @@
         padding-bottom: 20px;
         &-text {
           margin-top: 10px;
+        }
+        &-img {
+          @media screen and (max-width: 360px) {
+            & {
+              max-width: 300px;
+            }
+          }
         }
       }
     }

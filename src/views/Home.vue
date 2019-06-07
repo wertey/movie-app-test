@@ -1,30 +1,22 @@
 <template>
-  <div class="home">
-
-  </div>
+    <div class="main">
+      <Movies></Movies>
+    </div>
 </template>
 
+<script>
 
 
-  <script>
+  import Movies from '../components/Movies.vue';
 
-  import HeaderTemplate from '../components/HeaderTemplate.vue';
-
-  export default {
-    name: 'Home',
-    components: {
-
-    },
-  };
+    export default {
+        name: "Home",
+      components: {
+          Movies
+      }
+    }
 </script>
 
-<style lang="scss">
-
-  @import "../assets/scss/core";
-
-
-
-
-
+<style scoped lang="scss">
 
 </style>

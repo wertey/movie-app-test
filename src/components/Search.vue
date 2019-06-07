@@ -1,16 +1,37 @@
 <template>
     <div class="search">
-      <input class="search__input" placeholder="Enter you words" type="search" v-model="search">
+      <input class="search__input" placeholder="Search by Title" type="search" v-model="searching" @keyup.enter="filtered">
     </div>
 </template>
 
 <script>
+
+  import axios from 'axios';
+
     export default {
         name: "Search",
       data() {
          return {
-           search: '',
+           searching: '',
+           info: '',
          }
+      },
+      computed: {
+        filtered() {
+          console.log(this.info)
+          console.log(this.searching)
+            return  this.info.filter((movie) => {
+            return movie.Title.match(this.searching);
+          })
+        },
+      },
+      beforeMount() {
+        axios
+          .get('https://www.omdbapi.com/?i=tt3896198&apikey=8523cbb8&s=Batman&page=2')
+          .then(response => {
+            this.info = response.data.Search;
+          })
+          .catch(err => console.log(err));
       }
     }
 </script>

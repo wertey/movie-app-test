@@ -3,7 +3,7 @@
     <div class="header">
       <div class="header-row">
         <div class="header-row__logo">
-          Movie Catalog
+          <router-link class="header-row__logo-link" to="/">Movie Catalog</router-link>
         </div>
         <div class="header-row__search">
          <Search></Search>
@@ -13,26 +13,30 @@
         </div>
       </div>
     </div>
-    <Movies></Movies>
+    <router-view/>
     <Pagination></Pagination>
+
   </div>
 </template>
 
 <script>
 
-  import User from './components/User.vue';
-  import Search from './components/Search.vue';
-  import Movies from './components/Movies.vue';
-  import Pagination from './components/Pagination.vue';
+import User from './components/User.vue';
+import Search from './components/Search.vue';
+import Pagination from './components/Pagination.vue';
 
 
-  export default {
-    name: 'HeaderTemplate',
+export default {
+    name: 'App',
     components: {
       Search,
       User,
-      Movies,
       Pagination,
+    },
+    data() {
+      return {
+        loading: true,
+      }
     },
   };
 </script>
@@ -74,11 +78,11 @@
       &__logo {
         font-size: 24px;
         font-weight: bold;
+        &-link {
+          text-decoration: none;
+          color: $color-black;
+        }
       }
     }
 }
-
-
-
-
 </style>

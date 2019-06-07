@@ -1,63 +1,43 @@
 <template>
     <div class="movies">
       <div class="movies__result">
-        You searched for: Batman, 338 results found
+        You searched for: Batman, {{this.founded}} results found
       </div>
       <div class="movies-row">
-        <div class="movies-row__block">
+        <div class="movies-row__block" v-for="(movie,index) in info" :key="index">
           <img class="movies-row__block-img" src="../assets/images/img.png" alt="">
-          <div class="movies-row__block-text">Name: Batman</div>
-          <div class="movies-row__block-text">Year: 1996</div>
-          <div class="movies-row__block-text">imbdID: 2387hg8</div>
-          <div class="movies-row__block-text">Type: movie</div>
-        </div>
-        <div class="movies-row__block">
-          <img class="movies-row__block-img" src="../assets/images/img.png" alt="">
-          <div class="movies-row__block-text">Name: Batman</div>
-          <div class="movies-row__block-text">Year: 1996</div>
-          <div class="movies-row__block-text">imbdID: 2387hg8</div>
-          <div class="movies-row__block-text">Type: movie</div>
-        </div>
-        <div class="movies-row__block">
-          <img class="movies-row__block-img" src="../assets/images/img.png" alt="">
-          <div class="movies-row__block-text">Name: Batman</div>
-          <div class="movies-row__block-text">Year: 1996</div>
-          <div class="movies-row__block-text">imbdID: 2387hg8</div>
-          <div class="movies-row__block-text">Type: movie</div>
-        </div>
-        <div class="movies-row__block">
-          <img class="movies-row__block-img" src="../assets/images/img.png" alt="">
-          <div class="movies-row__block-text">Name: Batman</div>
-          <div class="movies-row__block-text">Year: 1996</div>
-          <div class="movies-row__block-text">imbdID: 2387hg8</div>
-          <div class="movies-row__block-text">Type: movie</div>
+          <div class="movies-row__block-text">Name: {{movie.Title}}</div>
+          <div class="movies-row__block-text">Year: {{movie.Year}}</div>
+          <div class="movies-row__block-text">imbdID: {{movie.imdbID}}</div>
+          <div class="movies-row__block-text">Type: {{movie.Type}}</div>
         </div>
       </div>
     </div>
 </template>
 
 <script>
+
+import axios from 'axios';
+
     export default {
         name: "Movies",
       data() {
-        return {
-          loading: true,
-          row: '',
-          column: '',
-        }
+          return {
+            info: '',
+            founded: 0
+          }
       },
       beforeMount() {
-        const tokenStr = 'bCT_s0ATF98HruWcM5R0N5ejsiIeKwl9NKTyV880f5k=';
-        axios({ method: 'get', url: 'https://lifestylechristianity.impactfactors.net/api/members/admin/1.0/list', headers: { 'X-Custom-Auth': tokenStr } })
-          .then(res => {
-            this.column = res.data.columns;
-            this.row = res.data.data;
-            console.log(res)
+        axios
+          .get('https://www.omdbapi.com/?i=tt3896198&apikey=8523cbb8&s=Batman&page=2')
+          .then(response => {
+            this.info = response.data.Search;
+            console.log(this.info)
           })
           .catch(err => console.log(err))
-          .finally(() => this.loading = false)
-      },
-    }
+          .finally(() => (this.loading = false));
+        }
+}
 </script>
 
 <style scoped lang="scss">

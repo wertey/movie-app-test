@@ -1,17 +1,17 @@
 <template>
     <div class="pagination">
-      <a class="pagination__link" href="#">&laquo;</a>
-      <a class="pagination__link" href="#">1</a>
-      <a class="pagination__link" href="#">2</a>
-      <a class="pagination__link" href="#">3</a>
-      <a class="pagination__link" href="#">4</a>
-      <a class="pagination__link" href="#">5</a>
-      <a class="pagination__link" href="#">6</a>
-      <a class="pagination__link" href="#">7</a>
-      <a class="pagination__link" href="#">8</a>
-      <a class="pagination__link" href="#">9</a>
-      <a class="pagination__link" href="#">10</a>
-      <a class="pagination__link" href="#">&raquo;</a>
+     <router-link class="pagination__link" tag="a" to="">&laquo;</router-link>
+     <router-link class="pagination__link" tag="a" to="/page1">1</router-link>
+     <router-link class="pagination__link" tag="a" to="/page2">2</router-link>
+     <router-link class="pagination__link" tag="a" to="/page3">3</router-link>
+     <router-link class="pagination__link" tag="a" to="/page4">4</router-link>
+     <router-link class="pagination__link" tag="a" to="/page5">5</router-link>
+     <router-link class="pagination__link" tag="a" to="/page6">6</router-link>
+     <router-link class="pagination__link" tag="a" to="/page7">7</router-link>
+     <router-link class="pagination__link" tag="a" to="/page8">8</router-link>
+     <router-link class="pagination__link" tag="a" to="/page9">9</router-link>
+     <router-link class="pagination__link" tag="a" to="/page10">10</router-link>
+     <router-link class="pagination__link" tag="a" to="">&raquo;</router-link>
     </div>
 </template>
 

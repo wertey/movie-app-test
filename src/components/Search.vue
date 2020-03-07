@@ -7,6 +7,7 @@
 <script>
 
   import axios from 'axios';
+  import Pagination from './Pagination.vue';
 
     export default {
         name: "Search",
@@ -18,8 +19,6 @@
       },
       computed: {
         filtered() {
-          console.log(this.info)
-          console.log(this.searching)
             return  this.info.filter((movie) => {
             return movie.Title.match(this.searching);
           })
